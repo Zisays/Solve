@@ -1,0 +1,33 @@
+{
+  "name": "zisay/solve",
+  "description": "A PHP framework born to solve user needs",
+  "type": "project",
+  "license": "Apache-2.0",
+  "autoload": {
+    "files": [
+      "solve/function/solve.php"
+    ],
+    "psr-4": {
+      "Api\\": "api/",
+      "Web\\": "web/",
+      "Solve\\": "solve/"
+    }
+  },
+  "authors": [
+    {
+      "name": "zisay",
+      "email": "zisayzhang@outlook.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=8.0",
+    "ext-pdo": "*"
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://mirrors.aliyun.com/composer/"
+    }
+  }
+}

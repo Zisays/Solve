@@ -1,0 +1,27 @@
+body {
+    background: #2b2b2b;
+    color: #CB742D;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.table tr th {
+    border: solid 2px #323232;
+    height: 20px;
+    width: 100%;
+    background: #232525;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.table tr td {
+    border: solid 2px #323232;
+    height: 20px;
+    text-align: left;
+    background: #232525;
+    padding: 10px;
+}
