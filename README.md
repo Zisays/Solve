@@ -18,7 +18,7 @@ https://api.zisay.cn
 
 ### 2、版本号
 
-应该将Api的版本号（version 简写就是  v1）放入 URL
+应该将Api的版本号（version 简写就是  v1）放入 URL中
 
 ```
 https://api.zisay.cn/v1/
