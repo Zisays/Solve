@@ -10,6 +10,11 @@ class Register
         self::error();
     }
 
+    public function timeZone(): void
+    {
+        date_default_timezone_set('Asia/Shanghai'); //设置上海时区
+    }
+
     public static function constant(): void
     {
         define('ROOT', $_SERVER['DOCUMENT_ROOT']);

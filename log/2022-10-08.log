@@ -1,0 +1,18 @@
+[08-Oct-2022 11:09:43 Asia/Shanghai] PHP Fatal error:  Uncaught Error: Class "Solve\FooClass" not found in D:\dev\php\www\api.solve.com\solve\Route.php:10
+Stack trace:
+#0 D:\dev\php\www\api.solve.com\solve\Http.php(13): Solve\Route::run()
+#1 D:\dev\php\www\api.solve.com\index.php(5): Solve\Http->run('config/local.en...')
+#2 {main}
+  thrown in D:\dev\php\www\api.solve.com\solve\Route.php on line 10
+[08-Oct-2022 11:09:43 Asia/Shanghai] 
+错误日期：【 2022-10-08 11:09:43 】
+错误级别：致命的运行时错误(E_ERROR)
+错误信息：Uncaught Error: Class "Solve\FooClass" not found in D:\dev\php\www\api.solve.com\solve\Route.php:10
+Stack trace:
+#0 D:\dev\php\www\api.solve.com\solve\Http.php(13): Solve\Route::run()
+#1 D:\dev\php\www\api.solve.com\index.php(5): Solve\Http->run('config/local.en...')
+#2 {main}
+  thrown
+错误文件：D:\dev\php\www\api.solve.com\solve\Route.php
+错误行号：10
+

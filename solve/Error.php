@@ -12,11 +12,19 @@ class Error
      */
     public static function debug(): void
     {
+        error_reporting(E_ALL);
         if (ENV::get('DEBUG')) {
-            ini_set('display_errors', 1);
-            error_reporting(E_ALL);
+            //开启错误信息输出到页面
+            ini_set('display_errors', '1');
         } else {
-            ini_set('display_errors', 0);
+            //关闭错误信息输出到页面
+            ini_set('display_errors', '0');
+            //设置错误日志保存路径
+            ini_set('error_log', $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'log' . DIRECTORY_SEPARATOR . date('Y-m-d') . '.log');
+            //开启错误日志记录
+            ini_set('log_errors', '1');
+            //不重复记录出现在同一个文件中的同一行代码上的错误信息。
+            ini_set('ignore_repeated_errors', 1);
         }
     }
 
@@ -39,27 +47,31 @@ class Error
      */
     public static function error_end(): void
     {
-        $e = error_get_last();
-        $errType = match (error_get_last()) {
-            1 => '致命的运行时错误',
-            2 => '运行时警告 (非致命错误)',
-            4 => '编译时语法解析错误',
-            8, 8192 => '运行时通知',
-            16 => '在 PHP 初始化启动过程中发生的致命错误',
-            32 => 'PHP 初始化启动过程中发生的警告 (非致命错误)',
-            64 => '致命编译时错误',
-            128 => '编译时警告 (非致命错误)',
-            256 => '用户产生的错误信息',
-            512, 16384 => '用户产生的警告信息',
-            1024 => '用户产生的通知信息',
-            2048 => '启用 PHP 对代码的修改建议，以确保代码具有最佳的互操作性和向前兼容性。',
-            4096 => '可被捕捉的致命错误',
-            default => false
-        };
-        if ($errType !== false) {
-            throw new Exception($e, $errType);
+        $egl = error_get_last();
+        if (!empty($egl['type']) and ($egl['type'] > 1)) {
+            $egl_type = match ($egl['type']) {
+                1 => '致命的运行时错误(E_ERROR)',
+                2 => '非致命的运行时错误(E_WARNING)',
+                4 => '编译时语法解析错误(E_PARSE)',
+                8 => '运行时提示(E_NOTICE)',
+                16 => 'PHP内部错误(E_CORE_ERROR)',
+                32 => 'PHP内部警告(E_CORE_WARNING)',
+                64 => 'Zend脚本引擎内部错误(E_COMPILE_ERROR)',
+                128 => 'Zend脚本引擎内部警告(E_COMPILE_WARNING)',
+                256 => '用户自定义错误(E_USER_ERROR)',
+                512 => '用户自定义警告(E_USER_WARNING)',
+                1024 => '用户自定义提示(E_USER_NOTICE)',
+                2048 => '代码提示(E_STRICT)',
+                4096 => '可以捕获的致命错误(E_RECOVERABLE_ERROR)',
+                8191 => '所有错误警告(E_ALL)',
+                default => '未知类型',
+            };
+            $msg = PHP_EOL . '错误日期：' . '【 ' . date("Y-m-d H:i:s") . ' 】' . PHP_EOL;
+            $msg .= '错误级别：' . $egl_type . PHP_EOL;
+            $msg .= '错误信息：' . $egl['message'] . PHP_EOL;
+            $msg .= '错误文件：' . $egl['file'] . PHP_EOL;
+            $msg .= '错误行号：' . $egl['line'] . PHP_EOL . PHP_EOL;
+            error_log($msg, 0);
         }
     }
-
-
 }
