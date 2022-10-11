@@ -7,5 +7,5 @@
  */
 function dump($data): void
 {
-    include ROOT . '/solve/Page/dump.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/solve/Page/dump.php';
 }

@@ -14,7 +14,7 @@ class Env
      */
     public static function run($filePath): void
     {
-        $env = parse_ini_file($filePath, true);
+        $env = parse_ini_file($filePath . '.env', true);
         foreach ($env as $key => $val) {
             $prefix = static::ENV_PREFIX . strtoupper($key);
             if (is_array($val)) {

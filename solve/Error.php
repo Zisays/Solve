@@ -10,7 +10,7 @@ class Error
      * 调试模式（true:开，false：关）
      * @return void
      */
-    public static function debug(): void
+    public static function run(): void
     {
         error_reporting(E_ALL);
         if (ENV::get('DEBUG')) {

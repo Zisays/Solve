@@ -1,6 +1,8 @@
 <?php
 
-namespace Solve\Package\Chord;
+namespace Solve\Database;
+
+use Solve\Config;
 
 class Mysql extends DataBase
 {
@@ -11,6 +13,7 @@ class Mysql extends DataBase
 
     public function __construct(string $dsn, string $username, string $password, array $driver_options = [])
     {
+        Config::database();
         try {
             $this->pdo = new \PDO($dsn, $username, $password, $driver_options);
             return $this->pdo;

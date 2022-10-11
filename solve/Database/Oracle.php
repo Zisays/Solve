@@ -1,6 +1,6 @@
 <?php
 
-namespace Solve\Package\Chord;
+namespace Solve\Database;
 
 class Oracle extends DataBase
 {

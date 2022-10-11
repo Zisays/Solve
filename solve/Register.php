@@ -6,11 +6,12 @@ class Register
 {
     public static function run(): void
     {
+        self::timeZone();
         self::constant();
         self::error();
     }
 
-    public function timeZone(): void
+    public static function timeZone(): void
     {
         date_default_timezone_set('Asia/Shanghai'); //设置上海时区
     }
@@ -27,4 +28,6 @@ class Register
         //注册用户自定义错误处理方法
         set_error_handler('Solve\Error::error_handler');
     }
+
+
 }

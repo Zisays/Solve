@@ -22,7 +22,8 @@
   "minimum-stability": "dev",
   "require": {
     "php": ">=8.0",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-curl": "*"
   },
   "repositories": {
     "packagist": {
